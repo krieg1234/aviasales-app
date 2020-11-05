@@ -2,6 +2,8 @@ import React from 'react';
 import { Card, Col, Row } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
+import { uniqueId } from 'lodash';
+/*
 const ticketExample = {
   // Цена в рублях
   price: 666,
@@ -32,11 +34,11 @@ const ticketExample = {
       // Массив кодов (iata) городов с пересадками
       stops: ['Код города 21', 'Код города 22', 'Код города 23'],
       // Общее время перелёта в минутах
-      duration: 666
+        : 666
     }
   ]
 }
-
+*/
 const mapStateToProps = (state) => {
   const props = {
     //tickets: state.tickets,
@@ -51,14 +53,14 @@ class TickedCard extends React.Component {
 
     return (
       <Card>
-        <Row>
+        <Row style={{ display: 'flex', justifyContent: 'space-between' }}>
           <p>{price} р</p>
           <p>{carrier}</p>
 
         </Row>
         {segments.map(({ origin, destination, date, stops, duration }) => {
           return (
-            <div>
+            <div key={uniqueId()}>
               <Row>
                 <Col>
                   <p>{origin}-{destination}</p>

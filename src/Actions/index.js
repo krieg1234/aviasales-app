@@ -14,3 +14,5 @@ export const updateTicketsList = async (dispatch) => {
     dispatch(updateTicketsListFailure());
   }
 };
+
+export const sortTicketsList = createAction('TICKETS_LIST_SORT');
