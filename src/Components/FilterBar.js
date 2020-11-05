@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { addFilter, removeFilter, buildTicketsList } from '../Actions';
 
@@ -18,11 +18,10 @@ class FilterBar extends React.Component {
     dispatch(buildTicketsList());
   }
 
-  updateStopsFilterListHandler = (value) => (e) => {
+  updateFilterHandler = (value, typeOfFilter) => (e) => {
     const { dispatch } = this.props;
-    const stopsFilter = this.props.filters.byStops;
     const payload = {
-      filterType: 'byStops',
+      filterType: typeOfFilter,
       value
     }
     if (e.target.checked) dispatch(addFilter(payload));
@@ -36,11 +35,11 @@ class FilterBar extends React.Component {
       <Form onSubmit={this.filterTasksListHandler}>
         <Form.Group>
           <Form.Label>Количество пересадок</Form.Label>
-          <Form.Check type='checkbox' label='Все' onInput={this.updateStopsFilterListHandler(Infinity)} />
-          <Form.Check type='checkbox' label='Без пересадок' onInput={this.updateStopsFilterListHandler(0)} />
-          <Form.Check type='checkbox' label='1 пересадка' onInput={this.updateStopsFilterListHandler(1)} />
-          <Form.Check type='checkbox' label='2 пересадки' onInput={this.updateStopsFilterListHandler(2)} />
-          <Form.Check type='checkbox' label='3 пересадки' onInput={this.updateStopsFilterListHandler(3)} />
+          <Form.Check type='checkbox' label='Все' onInput={this.updateFilterHandler(Infinity, 'byStops')} />
+          <Form.Check type='checkbox' label='Без пересадок' onInput={this.updateFilterHandler(0, 'byStops')} />
+          <Form.Check type='checkbox' label='1 пересадка' onInput={this.updateFilterHandler(1, 'byStops')} />
+          <Form.Check type='checkbox' label='2 пересадки' onInput={this.updateFilterHandler(2, 'byStops')} />
+          <Form.Check type='checkbox' label='3 пересадки' onInput={this.updateFilterHandler(3, 'byStops')} />
         </Form.Group>
         <Form.Label>Найдено: {this.props.ticketsCount} билетов</Form.Label>
       </Form>

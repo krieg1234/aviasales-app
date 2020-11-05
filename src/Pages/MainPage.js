@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tab, Tabs } from 'react-bootstrap';
+import { Col, Container, Row, Tab, Tabs } from 'react-bootstrap';
 import FilterBar from '../Components/FilterBar';
 import TicketsList from '../Components/TicketsList';
 
@@ -22,14 +22,22 @@ class MainPage extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
-        <FilterBar />
-        <Tabs defaultActiveKey='cheapest' id='tickets-sort-tab' onSelect={this.sortTicketsListByPriceEvent}>
-          <Tab eventKey='cheapest' title='Самый дешёвый'></Tab>
-          <Tab eventKey='fastest' title='Самый быстрый'></Tab>
-        </Tabs>
-        <TicketsList />
-      </React.Fragment>
+      <Container fluid>
+        <Row>
+          <Col md='3'>
+            <FilterBar />
+          </Col>
+          <Col md='9'>
+            <Tabs defaultActiveKey='cheapest' id='tickets-sort-tab' onSelect={this.sortTicketsListByPriceEvent}>
+              <Tab eventKey='cheapest' title='Самый дешёвый'></Tab>
+              <Tab eventKey='fastest' title='Самый быстрый'></Tab>
+            </Tabs>
+            <TicketsList />
+          </Col>
+
+        </Row>
+
+      </Container>
 
     )
   }
