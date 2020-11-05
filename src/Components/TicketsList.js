@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateTicketsList } from '../Actions/index';
+import { buildTicketsList, updateTicketsList } from '../Actions/index';
 import TicketCard from './TicketCard';
 
 const mapStateToProps = (state) => {
@@ -15,13 +15,14 @@ class TicketsList extends React.Component {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(updateTicketsList);
+    dispatch(buildTicketsList());
   }
 
   render() {
     const { tickets } = this.props;
     return (
       <div>
-        {tickets.allTickets.map((ticket) => {
+        {tickets.buildedTicketsList.map((ticket) => {
           return (
             <TicketCard key={ticket} data={tickets.byId[ticket]} />
           )
