@@ -1,26 +1,29 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { updateTicketsList } from '../Actions/index';
 import TicketCard from './TicketCard';
-
-const ticketsListExample = [1, 2, 3, 4, 5];
 
 const mapStateToProps = (state) => {
   const props = {
-    tickets: ticketsListExample,
+    tickets: state.tickets,
   }
   return props;
 }
 
-
-
 class TicketsList extends React.Component {
+
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch(updateTicketsList);
+  }
+
   render() {
     const { tickets } = this.props;
     return (
       <div>
-        {tickets.map((ticket) => {
+        {tickets.allTickets.map((ticket) => {
           return (
-            <TicketCard />
+            <TicketCard key={ticket} data={tickets.byId[ticket]} />
           )
         })}
       </div>

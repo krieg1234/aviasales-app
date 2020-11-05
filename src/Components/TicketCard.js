@@ -39,14 +39,15 @@ const ticketExample = {
 
 const mapStateToProps = (state) => {
   const props = {
-    ticket: ticketExample,
+    //tickets: state.tickets,
   }
   return props;
 }
 
 class TickedCard extends React.Component {
   render() {
-    const { price, carrier, segments } = this.props.ticket;
+    //const ticket = this.props.tickets[this.props.key]
+    const { price, carrier, segments } = this.props.data;
 
     return (
       <Card>

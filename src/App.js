@@ -6,6 +6,7 @@ import MainPage from './Pages/MainPage';
 import Footer from './Components/Footer';
 
 function App() {
+
   return (
     <Container>
       <Header />
