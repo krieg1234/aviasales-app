@@ -3,6 +3,9 @@ import { Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { addFilter, removeFilter, buildTicketsList } from '../Actions';
 
+
+
+
 const mapStateToProps = (state) => {
   const props = {
     ticketsCount: state.tickets.buildedTicketsList.length,
@@ -32,14 +35,14 @@ class FilterBar extends React.Component {
 
   render() {
     return (
-      <Form onSubmit={this.filterTasksListHandler}>
-        <Form.Group>
-          <Form.Label>Количество пересадок</Form.Label>
-          <Form.Check type='checkbox' label='Все' onInput={this.updateFilterHandler(Infinity, 'byStops')} />
-          <Form.Check type='checkbox' label='Без пересадок' onInput={this.updateFilterHandler(0, 'byStops')} />
-          <Form.Check type='checkbox' label='1 пересадка' onInput={this.updateFilterHandler(1, 'byStops')} />
-          <Form.Check type='checkbox' label='2 пересадки' onInput={this.updateFilterHandler(2, 'byStops')} />
-          <Form.Check type='checkbox' label='3 пересадки' onInput={this.updateFilterHandler(3, 'byStops')} />
+      <Form onSubmit={this.filterTasksListHandler} className='rounded-lg my-2 p-2 shadow-lg'>
+        <Form.Group >
+          <Form.Label className='my-2 bold text-uppercase'>Количество пересадок</Form.Label>
+          <Form.Check className='my-2' type='checkbox' label='Все' onInput={this.updateFilterHandler(Infinity, 'byStops')} />
+          <Form.Check className='my-2' type='checkbox' label='Без пересадок' onInput={this.updateFilterHandler(0, 'byStops')} />
+          <Form.Check className='my-2' type='checkbox' label='1 пересадка' onInput={this.updateFilterHandler(1, 'byStops')} />
+          <Form.Check className='my-2' type='checkbox' label='2 пересадки' onInput={this.updateFilterHandler(2, 'byStops')} />
+          <Form.Check className='my-2' type='checkbox' label='3 пересадки' onInput={this.updateFilterHandler(3, 'byStops')} />
         </Form.Group>
         <Form.Label>Найдено: {this.props.ticketsCount} билетов</Form.Label>
       </Form>

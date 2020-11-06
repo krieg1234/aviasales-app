@@ -8,11 +8,14 @@ import Footer from './Components/Footer';
 function App() {
 
   return (
-    <Container>
+    <React.Fragment>
       <Header />
-      <MainPage />
+      <Container>
+
+        <MainPage />
+      </Container>
       <Footer />
-    </Container>
+    </React.Fragment>
   );
 }
 
